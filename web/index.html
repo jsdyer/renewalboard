@@ -13,21 +13,35 @@
   <a class="skip" href="#main">Skip to content</a>
   <header><a href="https://coolcode.ca/">← CoolCode.ca</a><a href="{{SOURCE_URL}}">Source &amp; instructions ↗</a></header>
   <main id="main">
-    <p class="eyebrow">Browser tool starter</p>
+    <p class="eyebrow">Networks &amp; routing · registry and certificate expiry</p>
     <h1>{{TITLE}}</h1>
     <p class="intro">{{DESCRIPTION}}</p>
-    <section aria-labelledby="example-title">
-      <h2 id="example-title">Clean a list</h2>
-      <p>Trim spaces, skip blank lines and remove exact duplicates. Capitalization stays distinct.</p>
-      <div class="panels">
-        <div><label for="input">Your lines</label><textarea id="input" rows="10" maxlength="100000" spellcheck="false" placeholder="Paste one item per line"></textarea></div>
-        <div><label for="output">Cleaned lines</label><textarea id="output" rows="10" readonly spellcheck="false"></textarea></div>
-      </div>
-      <div class="actions"><button id="sample" type="button">Load example</button><button id="clear" type="button">Clear</button><button id="copy" type="button" hidden>Copy result</button></div>
-      <p id="status" role="status" aria-live="polite">Paste a list to begin.</p>
-      <noscript><p>This tool needs JavaScript to process your text. The source is available above.</p></noscript>
+
+    <section aria-labelledby="list-title">
+      <h2 id="list-title">Your domains</h2>
+      <form id="form">
+        <label for="domains">Domains, one per line <span class="hint">(up to <span id="max">50</span>)</span></label>
+        <textarea id="domains" spellcheck="false" placeholder="example.ca&#10;example.com"></textarea>
+        <label class="check"><input type="checkbox" id="certs" checked> Also check certificate expiry <span class="hint">(slower)</span></label>
+        <label class="check"><input type="checkbox" id="remember"> Remember this list on this device</label>
+        <div class="actions"><button type="submit">Check renewals</button><button type="button" class="quiet-btn" id="examples">Load examples</button></div>
+      </form>
+      <p id="status" role="status" aria-live="polite"></p>
+      <noscript><p>This tool needs JavaScript to query the registries.</p></noscript>
     </section>
-    <aside aria-label="Privacy"><strong>Stays on your device.</strong> The browser processes your text in this tab. Reloading clears it.</aside>
+
+    <section id="results" aria-labelledby="board-title" hidden>
+      <h2 id="board-title">Renewal board</h2>
+      <div class="counts" id="counts"></div>
+      <div class="table-wrap"><table id="board" class="board"></table></div>
+      <div class="actions">
+        <button type="button" id="dl-ics">Download calendar (.ics)</button>
+        <button type="button" id="dl-csv">Download table (.csv)</button>
+      </div>
+      <p class="small">The calendar holds an all-day event on each expiry date, with reminders 30 and 7 days before. Import it into Google Calendar, Outlook or Apple Calendar. It's a snapshot, so download it again after you renew.</p>
+    </section>
+
+    <aside aria-label="Privacy and sources"><strong>What leaves your browser.</strong> Each domain is sent from your browser to IANA (to find its registry), to that registry's RDAP service (CIRA for .ca), and, if certificates are on, to crt.sh. Nothing is sent to coolcode.ca. Your list is kept only if you tick "Remember this list", which saves it in this browser under <code>coolcode:renewalboard:list</code>. Unticking removes it. Registries publish expiry dates differently, and some (including several country-code domains) publish none.</aside>
   </main>
   <footer>Part of <a href="https://coolcode.ca/">the CoolCode collection</a>. {{ISSUE_LINK}}</footer>
 </body>

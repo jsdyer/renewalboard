@@ -1,0 +1,11 @@
+{
+  "examples": ["cira.ca", "coolcode.ca", "dal.ca", "smu.ca"],
+  "max_domains": 50,
+  "concurrency": 4,
+  "warn_days": [30, 60, 90],
+  "calendar_alarms_days": [30, 7],
+  "sources": {
+    "rdap": { "bootstrap": "https://data.iana.org/rdap/dns.json", "timeout_ms": 9000 },
+    "certificates": { "enabled": true, "endpoint": "https://crt.sh/", "timeout_ms": 30000 }
+  }
+}

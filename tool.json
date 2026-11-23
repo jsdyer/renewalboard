@@ -1,16 +1,27 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "renewalboard",
+  "title": "Renewal Board",
+  "description": "Track when your domains and their certificates expire, spot missing transfer locks and DNSSEC, and export a renewal calendar.",
+  "category": "liminal-tools",
+  "tags": [
+    "domains",
+    "renewals",
+    "expiry",
+    "rdap",
+    "cira",
+    ".ca",
+    "certificates",
+    "dnssec",
+    "transfer lock",
+    "calendar"
+  ],
+  "icon": "calendar-days",
+  "url": "/renewalboard/",
+  "source": "https://github.com/jsdyer/renewalboard",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "live",
+    "detail": "Your browser asks each domain's registry through RDAP, and optionally crt.sh, for expiry dates when you check your list."
   }
 }
